@@ -63,7 +63,6 @@ roomtype = (
         ('Suite', "Suite"),
 )
 class RoomStatus(models.Model):
-    customer_name = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='roomstatus')
     room_no = models.IntegerField()
     room_type=models.CharField(max_length=10,choices=roomtype,default=False)
     room_description=models.TextField()
@@ -77,4 +76,4 @@ class RoomStatus(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.customer_name)
+        return str(self.room_no)

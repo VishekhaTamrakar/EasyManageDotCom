@@ -20,9 +20,9 @@ admin.site.register(CustomerService,ServiceList)
 
 
 class RoomList(admin.ModelAdmin):
-    list_display = ( 'customer_name', 'room_availability')
-    list_filter = ( 'customer_name','room_availability')
-    search_fields = ('customer_name','room_availability')
-    ordering = ['customer_name']
+    list_display = ( 'room_no', 'room_availability')
+    list_filter = ( 'room_no','room_availability')
+    search_fields = ('room_no','room_availability')
+    ordering = ['room_no']
 
 admin.site.register(RoomStatus,RoomList)
