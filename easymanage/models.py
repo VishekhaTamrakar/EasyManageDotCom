@@ -30,7 +30,7 @@ class Customer(models.Model):
 category = (
         ('Food', "Food"),
         ('Beverages', "Beverages"),
-        ('Food&Beverages', "Beverages"),
+        ('Food&Beverages', "Food&Beverages"),
         ('MaintenanceCost', "MaintenanceCost"),
 )
 
@@ -38,7 +38,6 @@ class CustomerService(models.Model):
     customer_name = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='services')
     service_category = models.CharField(max_length=10,choices=category, default='Food')
     description = models.TextField()
-    location = models.CharField(max_length=200)
     service_consumption_date = models.DateField(auto_now_add=True)
     service_charge = models.DecimalField(max_digits=10, decimal_places=2)
     created_date = models.DateTimeField(
@@ -63,6 +62,7 @@ roomtype = (
         ('Suite', "Suite"),
 )
 class RoomStatus(models.Model):
+
     room_no = models.IntegerField()
     room_type=models.CharField(max_length=10,choices=roomtype,default=False)
     room_description=models.TextField()
