@@ -68,20 +68,11 @@ roomtype = (
 )
 class RoomStatus(models.Model):
 
-    room_no = models.IntegerField(primary_key=True)
+    room_no=models.IntegerField(primary_key=True)
     room_type=models.CharField(max_length=10,choices=roomtype,default=False)
     room_description=models.TextField()
     room_availability=models.BooleanField(default=False)
-    created_date = models.DateTimeField(
-        default=timezone.now)
-    updated_date = models.DateTimeField(auto_now_add=True)
-    def created(self):
-        self.created_date = timezone.now()
-        self.save()
 
-    def updated(self):
-        self.updated_date = timezone.now()
-        self.save()
 
     def __str__(self):
         return str(self.room_no)

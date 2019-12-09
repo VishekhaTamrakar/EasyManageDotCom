@@ -140,7 +140,7 @@ def customerservice_delete(request, pk):
 
 @login_required
 def roomstatus_list(request):
-    roomstatus = RoomStatus.objects.filter(created_date__lte=timezone.now())
+    roomstatus = RoomStatus.objects.filter()
     return render(request, 'easymanage/roomstatus_list.html',
                  {'roomstatuss':roomstatus})
 
@@ -171,7 +171,7 @@ def roomstatus_edit(request, pk):
            editroomstatus = form.save(commit=False)
            editroomstatus.updated_date = timezone.now()
            editroomstatus.save()
-           roomstatus = RoomStatus.objects.filter(created_date__lte=timezone.now())
+           roomstatus = RoomStatus.objects.filter()
            return render(request, 'easymanage/roomstatus_list.html',
                          {'roomstatuss': roomstatus})
    else:
