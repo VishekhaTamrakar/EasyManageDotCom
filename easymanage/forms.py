@@ -9,7 +9,7 @@ class CustomerForm(forms.ModelForm):
 class CustomerServiceForm(forms.ModelForm):
     class Meta:
         model = CustomerService
-        fields = ('customer_name','service_category','description','quantity','service_consumption_date','service_charge')
+        fields = ('customer_name','service_category','description','service_consumption_date','service_charge')
 
 class RoomStatusForm(forms.ModelForm):
     class Meta:
