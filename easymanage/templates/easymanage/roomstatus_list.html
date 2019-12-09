@@ -1,0 +1,72 @@
+ {% extends "easymanage/base.html" %}<br>
+   {% block content %}
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    </head>
+    <body>
+
+
+
+        <h2  style="color:firebrick" align="center" ><b><i>Room Avaialbility</b></i></h2>
+    <br>
+
+        <table class="table table-bordered" style="background-color:white">
+            <thead>
+                        <tr class="bg-info" style="background:white">
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Room Description</th>
+                <th>Room Availability</th>
+                <th colspan="4" >Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for roomstatus in roomstatuss %}
+                <tr>
+
+
+                    <td>{{ roomstatus.room_type }}</td>
+                    <td>{{ roomstatus.room_no }}</td>
+                    <td>{{ roomstatus.room_description }}</td>
+                    {%  if roomstatus.room_availability %}
+                   <td><a class="btn btn-warning" style="background-color: #00a74f">Available</a>
+                      {% else %}
+                      <td><a class="btn btn-warning" style="background-color:crimson">Not Available</a>
+
+                        {% endif %}
+
+
+
+
+{% if user.is_superuser %}
+<td><a href="{% url 'easymanage:roomstatus_edit' pk=roomstatus.pk%}" class="btn btn-warning">Edit</a>
+
+
+<td><a href="{% url 'easymanage:roomstatus_delete' pk=roomstatus.pk%}" onclick="return confirm ('Are you sure you want to delete?')"
+                  class="btn btn-danger">Delete</a>
+                    {% else  %}
+                    <td><a href=""
+                  class="btn btn-danger">Access Denied</a>
+{% endif %}
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+        </table>
+{% if user.is_superuser %}
+ <td><a href="{% url 'easymanage:roomstatus_new' %}"
+                           class="btn btn-primary">Add New Room Status</a>
+{% endif %}
+    </body>
+    </html>
+{% endblock %}
+

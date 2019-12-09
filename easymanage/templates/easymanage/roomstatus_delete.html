@@ -1,0 +1,11 @@
+{% block body_block %}
+    <h1>Delete {{ roomstatus.room_no }}?</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="{% url 'easymanage:home' pk=roomstatus.room_no %} ">Cancel</a>
+
+    </form>
+
+{% endblock %}

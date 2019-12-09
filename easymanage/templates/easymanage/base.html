@@ -1,0 +1,117 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+{#<nav class="navbar navbar-dark bg-dark">#}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'easymanage:about' %}">Easy Manage.com</a>
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <ul class="sidebar navbar-nav">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'easymanage:customer_list' %}">
+                <span><b>Customer</span></b>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'easymanage:customerservice_list' %}">
+                  <span><b>Customer Service</span></b>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'easymanage:roomstatus_list' %}">
+                  <span><b>Room Availability Status</span></b>
+              </a>
+            </li>
+
+{% endif %}
+
+      </ul>
+
+</div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                {% if user.is_authenticated %}
+                    <a class="navbar-brand" href="#">Hello - {{ request.user }}</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: white">
+                            <span class="glyphicon glyphicon-Home "></span><b style="color: white">My Account</b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i><b>Logout</b></a></li>
+                            <li><a href="{% url 'password_change' %}"><b>Forgot Password</b></a></li>
+                        </ul>
+                    </li>
+
+                {% else %}
+                   <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">
+                <h2><span><b>Login</span></b></h2>
+              </a>
+            </li>
+
+
+                {% endif %}
+             </li>
+        </ul>
+    </div>
+</div>
+</nav>
+
+
+
+ <style>
+        body,html{
+            height: 100%;
+            margin: 0;
+            background: #7F7FD5;
+            background: -webkit-linear-gradient(to right, #ffffff, #ffffff);
+            background: linear-gradient(to right, #ffffff, #de9404);
+        }
+        #events_card{
+            padding-bottom: 40px;
+        }
+    </style>
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert"-{{message.tags}}>
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

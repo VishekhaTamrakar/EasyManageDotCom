@@ -1,0 +1,11 @@
+{% block body_block %}
+    <h1>Delete {{ customer.customer_name }}?</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="{% url 'easymanage:home' pk=customer.customer_name %} ">Cancel</a>
+
+    </form>
+
+{% endblock %}
