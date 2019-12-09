@@ -153,7 +153,7 @@ def roomstatus_new(request):
             newroomstatus = form.save(commit=False)
             newroomstatus.created_date = timezone.now()
             newroomstatus.save()
-            roomstatus = RoomStatus.objects.filter(created_date__lte=timezone.now())
+            roomstatus = RoomStatus.objects.filter()
             return render(request, 'easymanage/roomstatus_list.html',
                           {'roomstatuss': roomstatus})
     else:
