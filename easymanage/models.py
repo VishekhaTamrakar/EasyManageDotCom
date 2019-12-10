@@ -35,8 +35,8 @@ class Customer(models.Model):
 category = (
         ('Food', "Food"),
         ('Beverages', "Beverages"),
-        ('Food&Beverages', "Food&Beverages"),
-        ('MaintenanceCost', "MaintenanceCost"),
+        ('Other', "Other"),
+
 )
 
 class CustomerService(models.Model):
