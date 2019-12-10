@@ -42,7 +42,7 @@ category = (
 class CustomerService(models.Model):
     customer_name = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='services')
     service_category = models.CharField(max_length=10,choices=category, default='Food')
-    description = models.TextField()
+    description = models.CharField(max_length=100)
     service_consumption_date = models.DateField(default=timezone.now())
     service_charge = models.DecimalField(max_digits=10, decimal_places=2)
     created_date = models.DateTimeField(
