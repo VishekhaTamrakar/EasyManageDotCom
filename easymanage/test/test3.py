@@ -31,12 +31,12 @@ class test2(unittest.TestCase):
        select = Select(driver.find_element_by_xpath("//*[@id='id_customer_name']"))
        select.select_by_index(2)
        select = Select(driver.find_element_by_xpath("//*[@id='id_service_category']"))
-       select.select_by_index(2)
-       driver.find_element_by_id("id_description").send_keys("Loaded Nachos")
+       select.select_by_index(1)
+       driver.find_element_by_id("id_description").send_keys("Loaded")
        driver.find_element_by_id("id_service_charge").send_keys("12")
        time.sleep(1)
        driver.find_element_by_xpath("//*[@id='content']/form/button").click()
-       time.sleep(1)
+       time.sleep(5)
        driver.get("https://assignment4-vishekha-8220.herokuapp.com/customerservice_list/")
 
 
