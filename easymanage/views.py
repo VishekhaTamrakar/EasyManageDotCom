@@ -11,6 +11,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.db.models import Sum
 
+
 now = timezone.now()
 def home(request):
    return render(request, 'easymanage/home.html',
@@ -196,3 +197,6 @@ def summary(request, pk):
     return render(request, 'easymanage/summary.html', {'customers': customers,
                                                       'customerservices': customerservices,
                                                       'sum_service_charge': sum_service_charge,})
+
+
+

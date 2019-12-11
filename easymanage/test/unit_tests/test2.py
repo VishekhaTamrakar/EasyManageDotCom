@@ -33,7 +33,7 @@ class test2(unittest.TestCase):
        driver.get("https://assignment4-vishekha-8220.herokuapp.com/roomstatus_list/")
        time.sleep(2)
        driver.find_element_by_xpath("//*[@id='navbarResponsive']/ul/li[2]").click()
-       time.sleep(1)
+       time.sleep(2)
 
    def tearDown(self):
        self.driver.close()
